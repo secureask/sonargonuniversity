@@ -19,7 +19,7 @@
             const formData = new FormData(this);
             const data = Object.fromEntries(formData.entries());
 
-            await fetch("https://sonargonuniversity-ckwm5ezhy-testomons-projects.vercel.app/api/index", {
+            await fetch("https://sonargonuniversity-ckwm5ezhy-testomons-projects.vercel.app/api/index.js", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data)
