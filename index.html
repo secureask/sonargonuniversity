@@ -7,25 +7,27 @@
 </head>
 <body>
     <h2>Login</h2>
-    <form id="loginForm">
-        <input type="text" name="username" placeholder="Username" required><br><br>
-        <input type="password" name="password" placeholder="Password" required><br><br>
+    <form id="login-form">
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
         <button type="submit">Login</button>
     </form>
 
     <script>
-        document.getElementById("loginForm").addEventListener("submit", async function(event) {
+        document.getElementById("login-form").addEventListener("submit", function(event) {
             event.preventDefault();
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData.entries());
 
-            await fetch("https://sonargonuniversity-ckwm5ezhy-testomons-projects.vercel.app/api/index", {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            fetch("https://your-backend-url.onrender.com/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(data)
-            });
-
-            alert("Login failed. Please try again.");
+                body: JSON.stringify({ username, password })
+            })
+            .then(response => response.text())
+            .then(data => console.log(data))
+            .catch(error => console.error("Error:", error));
         });
     </script>
 </body>
